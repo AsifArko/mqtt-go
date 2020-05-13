@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package common;
+option go_package = "gitlab.com/stream/buffers/common";
+
+// Common Response For All
+message Response {
+    uint32 code = 1;
+    string message = 2;
+    bytes data = 3;
+}
+
+// Common Address Pattern/Struct
+message Address {
+    string type = 1;
+    CodeSystem division = 2;
+    CodeSystem district = 3;
+    CodeSystem area = 4;
+    uint32 zip = 5;
+    string street = 6;
+    double lat = 7;
+    double lon = 8;
+}
+
+message CodeSystem {
+    string code = 1;
+    string display = 2;
+    string ref = 3;
+}
+
+message MultilingualCodeSystem {
+    uint32 code = 1;
+    Multilingual display = 2;
+    string ref = 3;
+}
+
+message Locations {
+    string type = 1;
+    repeated CodeSystem names = 2;
+}
+
+message Request {
+    string id = 1;
+    string type = 2;
+    bool create_parent = 3;
+    string additional = 4;
+    bytes patch = 5;
+}
+
+message Social {
+    string website = 1;
+    repeated string phone = 2;
+    string facebook = 3;
+    string email = 4;
+}
+
+message Multilingual{
+    string bn = 1;
+    string en = 2;
+}
+
+message ProfilePicture {
+    string logo = 1;
+    string cover = 2;
+}

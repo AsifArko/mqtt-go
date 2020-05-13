@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package profile;
+
+import "common.proto";
+option go_package = "gitlab.com/stream/buffers/profile";
+
+message ProfileInfo {
+  string type = 1;
+  string id = 2;
+  Name name = 10;
+  string gender = 3;
+  common.Address address = 4;
+  repeated string hobbies = 5;
+  string dob = 6;
+  string registered = 7;
+  Picture picture = 8;
+  repeated WorkEducation work_education = 9;
+  string tag_line = 11;
+  bool verified = 12;
+}
+
+message WorkEducation{
+  string type = 1;
+  string place = 2;
+  string department = 3;
+  common.Address location = 4;
+}
+
+message Name{
+  string first_name = 1;
+  string last_name = 2;
+  string prefix = 3;
+}
+
+message Picture{
+  string profile = 1;
+  string cover= 2;
+}
+
+message TravelPost{
+  string uid = 2;
+  string post = 1;
+  string type = 4;
+  string post_id = 3;
+}

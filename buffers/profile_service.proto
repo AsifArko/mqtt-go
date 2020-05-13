@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package profile;
+
+import "common.proto";
+import "profile_info.proto";
+
+option go_package = "gitlab.com/stream/buffers/profile";
+
+service ProfileService{
+    // Get a Logged In User Profile
+    rpc GetProfile(common.Request) returns (ProfileInfo);
+    // Inserts Logged In User Profile
+    rpc InsertProfile(ProfileInfo) returns (ProfileInfo);
+    // Updates a Logged In User Profile
+    rpc UpdateProfile(common.Request) returns (ProfileInfo);
+    // Insert a sample travel post
+    rpc InsertTravelPost (TravelPost) returns (TravelPost);
+    // Get a travel post
+    rpc GetTravelPost (common.Request) returns (TravelPost);
+}
